@@ -9,7 +9,7 @@ import java.util.concurrent.locks.Lock;
 独占锁
  */
 
-public class SelfLock implements Lock {
+public class MySyncLock implements Lock {
 
 
 
