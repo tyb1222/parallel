@@ -4,7 +4,7 @@ package com.tyb1222.chapt05;
 public class TestMyLock {
 
     public void test(){
-        final SelfLock myLock = new SelfLock();
+        final MySyncLock myLock = new MySyncLock();
         class Work extends Thread {
 
             @Override

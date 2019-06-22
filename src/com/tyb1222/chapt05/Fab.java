@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Lock;
 
 public class Fab {
 
-    private Lock lock = new SelfLock();
+    private Lock lock = new MySyncLock();
 
 
     public int calc(int num) throws Exception {
