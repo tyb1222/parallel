@@ -5,6 +5,12 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
+
+/**
+ *  可重入锁。AQS中的 状态：state，指的是是否有线程持有锁。 state =0 时，表示无线程持有，此时任何线程都可以通过调用acquire获取锁。
+ *  获取锁的时候，讲state 值从0 修改为1
+ *  释放锁时，将state 的值 -1
+ */
 public class MyReentrantLock implements Lock {
 
     private Sync sync = new Sync();
