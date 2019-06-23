@@ -7,12 +7,14 @@ import java.util.concurrent.locks.Lock;
 
 public class MyReentrantLock implements Lock {
 
+    private Sync sync = new Sync();
+
     private static class Sync extends AbstractQueuedSynchronizer {
 
         @Override
         protected boolean tryAcquire(int count) {
             int currentState = getState();
-            int newState = currentState -count;
+            int newState = currentState + count;
             if (compareAndSetState(currentState,newState)){
                 setExclusiveOwnerThread(Thread.currentThread());
                 return true;
@@ -51,7 +53,8 @@ public class MyReentrantLock implements Lock {
 
     @Override
     public void lock() {
-
+        sync.acquire(1);
+        System.out.println(Thread.currentThread() + "  holds a lock");
     }
 
     @Override
@@ -71,7 +74,8 @@ public class MyReentrantLock implements Lock {
 
     @Override
     public void unlock() {
-
+        sync.release(1);
+        System.out.println(Thread.currentThread() + "  release over...");
     }
 
     @Override
