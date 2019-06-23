@@ -31,7 +31,7 @@ public class MySyncLock implements Lock {
 
         @Override
         protected boolean isHeldExclusively() {
-            return 1== getState();
+            return 1< getState();
         }
 
         @Override
@@ -64,6 +64,9 @@ public class MySyncLock implements Lock {
 
     private final Sync sync = new Sync();
 
+    /**
+     * 调用acquire 时参数为1
+     */
     @Override
     public void lock() {
         System.out.println(Thread.currentThread().getName() +" get lock");
@@ -87,10 +90,13 @@ public class MySyncLock implements Lock {
     }
 
 
+    /**
+     * 调用release 时参数为1
+     */
     @Override
     public void unlock() {
         System.out.println(Thread.currentThread().getName()+"  try release lock ");
-        sync.release(0);
+        sync.release(1);
         System.out.println(Thread.currentThread().getName()+ " release ok");
     }
 
