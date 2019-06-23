@@ -1,6 +1,5 @@
 package com.tyb1222.chapt05;
 
-
 import java.util.concurrent.locks.Lock;
 
 public class Fab {
@@ -31,21 +30,11 @@ public class Fab {
 
 
     public void test() {
-
-
-        // 启动3个子线程
         for (int i = 0; i < 3; i++) {
             Work w = new Work();
             w.start();
         }
-        // 主线程每隔1秒换行
-        for (int i = 0; i < 100; i++) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+
     }
 
 
@@ -55,7 +44,7 @@ public class Fab {
 
             try {
 
-                int result = calc(10);
+                int result = calc(1);
                 System.out.println(Thread.currentThread().getName() + "  "+result);
             } catch (Exception e) {
                 e.printStackTrace();
