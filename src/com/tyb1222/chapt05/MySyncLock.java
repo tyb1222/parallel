@@ -5,8 +5,8 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-/*
-独占锁
+/**
+ * AQS 实现独占锁
  */
 
 public class MySyncLock implements Lock {
@@ -19,7 +19,7 @@ public class MySyncLock implements Lock {
             super();
         }
 
-
+        /*获取所 */
         @Override
         protected boolean tryAcquire(int arg) {
             if (compareAndSetState(0,1)){
@@ -73,7 +73,7 @@ public class MySyncLock implements Lock {
 
     @Override
     public void lockInterruptibly() throws InterruptedException {
-
+        sync.acquireInterruptibly(1);
     }
 
     @Override
