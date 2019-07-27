@@ -33,7 +33,6 @@ public class TestMyFutureTask {
             MyFutureTask<Integer> task = new MyFutureTask(thread);
             tasks.add(task);
             new Thread(task).start();
-
         }
         for(MyFutureTask<Integer> entry : tasks){
             System.out.println(" >>>   result is :"  + entry.get());
