@@ -1,5 +1,6 @@
 package com.tyb1222.chapt09.threadpool;
 
+import java.util.Arrays;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -32,12 +33,14 @@ public class MyThreadPool {
 
     }
 
+    /*将任务提交到线程池*/
     public void submit(Runnable runnable){
         queue.add(runnable);
 
     }
 
-    public void destory(){
+    /*销毁线程*/
+    public void destroy(){
         for (int i = 0; i < thread_size; i++) {
             threads[i].stopWorkThread();
             threads[i] = null;
@@ -45,6 +48,15 @@ public class MyThreadPool {
         queue.clear();
     }
 
+
+    @Override
+    public String toString() {
+        return "MyThreadPool{" +
+                "thread_size=" + thread_size +
+                ", queue size =" + queue.size() +
+                ", threads=" + Arrays.toString(threads) +
+                '}';
+    }
 
     private class WorkThread extends Thread{
 
@@ -57,6 +69,7 @@ public class MyThreadPool {
                         System.out.println("thread id :" + getId()+ "  start work.");
                         task.run();
                     }
+                    task = null;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

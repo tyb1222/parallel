@@ -13,7 +13,9 @@ public class TestMyThreadpool {
         threadPool.submit(new CalcTask(60));
         threadPool.submit(new CalcTask(70));
         threadPool.submit(new CalcTask(80));
-
+        System.out.println(threadPool);
+        threadPool.destroy();
+        System.out.println("thread pool is destroyed....");
     }
 
 
